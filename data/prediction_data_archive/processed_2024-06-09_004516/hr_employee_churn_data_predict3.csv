@@ -1,0 +1,5 @@
+empid,satisfaction_level,last_evaluation,number_project,average_montly_hours,time_spend_company,Work_accident,promotion_last_5years,salary
+21,0.8,0.33,2,107,3,0,0,high
+22,0.8,0.76,3,282,6,0,0,low
+31,0.54,0.94,3,163,6,0,0,high
+32,0.17,0.62,3,143,2,1,0,high

@@ -1,0 +1,112 @@
+2024-06-09 00:54:30,225 : INFO : Start of Prediction
+2024-06-09 00:54:30,225 : INFO : run_id:2024-06-09_005430_152301662
+2024-06-09 00:54:30,225 : INFO : Start of Data Load, validation and transformation
+2024-06-09 00:54:30,225 : INFO : Start of Archiving Old Rejected Files...
+2024-06-09 00:54:30,225 : INFO : End of Archiving Old Rejected Files...
+2024-06-09 00:54:30,225 : INFO : Start of Archiving Old Validated Files...
+2024-06-09 00:54:30,234 : INFO : End of Archiving Old Validated Files...
+2024-06-09 00:54:30,234 : INFO : Start of Archiving Old Processed Files...
+2024-06-09 00:54:30,234 : INFO : End of Archiving Old Processed Files...
+2024-06-09 00:54:30,234 : INFO : Start of Archiving Old Result Files...
+2024-06-09 00:54:30,243 : INFO : End of Archiving Old Result Files...
+2024-06-09 00:54:30,243 : INFO : Start of Reading values From Schema...
+2024-06-09 00:54:30,243 : INFO : End of Reading values From Schema...
+2024-06-09 00:54:30,243 : INFO : Start of Validating Column Length...
+2024-06-09 00:54:30,254 : ERROR : Exception raised while Validating Column Length: 'utf-8' codec can't decode bytes in position 15-16: invalid continuation byte
+Traceback (most recent call last):
+  File "C:\Users\my pc\PycharmProjects\EmployeeRetentionPrediction\apps\ingestion\load_validate.py", line 86, in validate_column_length
+    csv = pd.read_csv(self.data_path+'/'+ file)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\my pc\PycharmProjects\EmployeeRetentionPrediction\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\my pc\PycharmProjects\EmployeeRetentionPrediction\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\my pc\PycharmProjects\EmployeeRetentionPrediction\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\my pc\PycharmProjects\EmployeeRetentionPrediction\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1898, in _make_engine
+    return mapping[engine](f, **self.options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\my pc\PycharmProjects\EmployeeRetentionPrediction\.venv\Lib\site-packages\pandas\io\parsers\c_parser_wrapper.py", line 93, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "parsers.pyx", line 574, in pandas._libs.parsers.TextReader.__cinit__
+  File "parsers.pyx", line 663, in pandas._libs.parsers.TextReader._get_header
+  File "parsers.pyx", line 874, in pandas._libs.parsers.TextReader._tokenize_rows
+  File "parsers.pyx", line 891, in pandas._libs.parsers.TextReader._check_tokenize_status
+  File "parsers.pyx", line 2053, in pandas._libs.parsers.raise_parser_error
+  File "<frozen codecs>", line 322, in decode
+UnicodeDecodeError: 'utf-8' codec can't decode bytes in position 15-16: invalid continuation byte
+2024-06-09 00:54:31,146 : ERROR : Unsuccessful End of Data Load, validation and transformation
+Traceback (most recent call last):
+  File "C:\Users\my pc\PycharmProjects\EmployeeRetentionPrediction\apps\ingestion\load_validate.py", line 326, in validate_predictset
+    self.validate_column_length(number_of_columns)
+  File "C:\Users\my pc\PycharmProjects\EmployeeRetentionPrediction\apps\ingestion\load_validate.py", line 99, in validate_column_length
+    raise e
+  File "C:\Users\my pc\PycharmProjects\EmployeeRetentionPrediction\apps\ingestion\load_validate.py", line 86, in validate_column_length
+    csv = pd.read_csv(self.data_path+'/'+ file)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\my pc\PycharmProjects\EmployeeRetentionPrediction\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\my pc\PycharmProjects\EmployeeRetentionPrediction\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\my pc\PycharmProjects\EmployeeRetentionPrediction\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\my pc\PycharmProjects\EmployeeRetentionPrediction\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1898, in _make_engine
+    return mapping[engine](f, **self.options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\my pc\PycharmProjects\EmployeeRetentionPrediction\.venv\Lib\site-packages\pandas\io\parsers\c_parser_wrapper.py", line 93, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "parsers.pyx", line 574, in pandas._libs.parsers.TextReader.__cinit__
+  File "parsers.pyx", line 663, in pandas._libs.parsers.TextReader._get_header
+  File "parsers.pyx", line 874, in pandas._libs.parsers.TextReader._tokenize_rows
+  File "parsers.pyx", line 891, in pandas._libs.parsers.TextReader._check_tokenize_status
+  File "parsers.pyx", line 2053, in pandas._libs.parsers.raise_parser_error
+  File "<frozen codecs>", line 322, in decode
+UnicodeDecodeError: 'utf-8' codec can't decode bytes in position 15-16: invalid continuation byte
+2024-06-09 00:54:31,146 : ERROR : Unsuccessful End of Prediction
+Traceback (most recent call last):
+  File "C:\Users\my pc\PycharmProjects\EmployeeRetentionPrediction\apps\ingestion\load_validate.py", line 326, in validate_predictset
+    self.validate_column_length(number_of_columns)
+  File "C:\Users\my pc\PycharmProjects\EmployeeRetentionPrediction\apps\ingestion\load_validate.py", line 99, in validate_column_length
+    raise e
+  File "C:\Users\my pc\PycharmProjects\EmployeeRetentionPrediction\apps\ingestion\load_validate.py", line 86, in validate_column_length
+    csv = pd.read_csv(self.data_path+'/'+ file)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\my pc\PycharmProjects\EmployeeRetentionPrediction\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\my pc\PycharmProjects\EmployeeRetentionPrediction\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\my pc\PycharmProjects\EmployeeRetentionPrediction\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\my pc\PycharmProjects\EmployeeRetentionPrediction\.venv\Lib\site-packages\pandas\io\parsers\readers.py", line 1898, in _make_engine
+    return mapping[engine](f, **self.options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\my pc\PycharmProjects\EmployeeRetentionPrediction\.venv\Lib\site-packages\pandas\io\parsers\c_parser_wrapper.py", line 93, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "parsers.pyx", line 574, in pandas._libs.parsers.TextReader.__cinit__
+  File "parsers.pyx", line 663, in pandas._libs.parsers.TextReader._get_header
+  File "parsers.pyx", line 874, in pandas._libs.parsers.TextReader._tokenize_rows
+  File "parsers.pyx", line 891, in pandas._libs.parsers.TextReader._check_tokenize_status
+  File "parsers.pyx", line 2053, in pandas._libs.parsers.raise_parser_error
+  File "<frozen codecs>", line 322, in decode
+UnicodeDecodeError: 'utf-8' codec can't decode bytes in position 15-16: invalid continuation byte
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\my pc\PycharmProjects\EmployeeRetentionPrediction\apps\prediction\predict_model.py", line 34, in batch_predict_from_model
+    self.loadValidate.validate_predictset()
+  File "C:\Users\my pc\PycharmProjects\EmployeeRetentionPrediction\apps\ingestion\load_validate.py", line 342, in validate_predictset
+    raise Exception
+Exception

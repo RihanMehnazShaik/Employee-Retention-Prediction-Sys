@@ -1,0 +1,115 @@
+2024-06-09 00:09:58,064 : INFO : Start of Prediction
+2024-06-09 00:09:58,065 : INFO : run_id:2024-06-09_000958_737084647
+2024-06-09 00:09:58,065 : INFO : Start of Data Load, validation and transformation
+2024-06-09 00:09:58,065 : INFO : Start of Archiving Old Rejected Files...
+2024-06-09 00:09:58,065 : INFO : End of Archiving Old Rejected Files...
+2024-06-09 00:09:58,065 : INFO : Start of Archiving Old Validated Files...
+2024-06-09 00:09:58,067 : INFO : End of Archiving Old Validated Files...
+2024-06-09 00:09:58,068 : INFO : Start of Archiving Old Processed Files...
+2024-06-09 00:09:58,068 : INFO : End of Archiving Old Processed Files...
+2024-06-09 00:09:58,068 : INFO : Start of Archiving Old Result Files...
+2024-06-09 00:09:58,069 : INFO : End of Archiving Old Result Files...
+2024-06-09 00:09:58,069 : INFO : Start of Reading values From Schema...
+2024-06-09 00:09:58,069 : INFO : End of Reading values From Schema...
+2024-06-09 00:09:58,069 : INFO : Start of Validating Column Length...
+2024-06-09 00:09:58,072 : INFO : End of Validating Column Length...
+2024-06-09 00:09:58,072 : INFO : Start of Validating Missing Values...
+2024-06-09 00:09:58,077 : INFO : End of Validating Missing Values...
+2024-06-09 00:09:58,077 : INFO : Start of Replacing Missing Values with NULL...
+2024-06-09 00:09:58,081 : ERROR : Exception raised while Replacing Missing Values with NULL: [Errno 13] Permission denied: 'data/prediction_data/hr_employee_churn_data_predict3.csv'
+Traceback (most recent call last):
+  File "C:\Users\my pc\PycharmProjects\EmployeeRetentionPrediction\apps\ingestion\load_validate.py", line 116, in replace_missing_values
+    csv.to_csv(self.data_path + "/" + file, index=None, header=True)
+  File "C:\Users\my pc\PycharmProjects\EmployeeRetentionPrediction\.venv\Lib\site-packages\pandas\util\_decorators.py", line 333, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\my pc\PycharmProjects\EmployeeRetentionPrediction\.venv\Lib\site-packages\pandas\core\generic.py", line 3967, in to_csv
+    return DataFrameRenderer(formatter).to_csv(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\my pc\PycharmProjects\EmployeeRetentionPrediction\.venv\Lib\site-packages\pandas\io\formats\format.py", line 1014, in to_csv
+    csv_formatter.save()
+  File "C:\Users\my pc\PycharmProjects\EmployeeRetentionPrediction\.venv\Lib\site-packages\pandas\io\formats\csvs.py", line 251, in save
+    with get_handle(
+         ^^^^^^^^^^^
+  File "C:\Users\my pc\PycharmProjects\EmployeeRetentionPrediction\.venv\Lib\site-packages\pandas\io\common.py", line 873, in get_handle
+    handle = open(
+             ^^^^^
+PermissionError: [Errno 13] Permission denied: 'data/prediction_data/hr_employee_churn_data_predict3.csv'
+2024-06-09 00:09:58,088 : INFO : Start of Creating Table...
+2024-06-09 00:09:58,089 : INFO : Opened prediction database successfully
+2024-06-09 00:09:58,103 : INFO : CREATE TABLE prediction_raw_data_t column_name
+2024-06-09 00:09:58,107 : INFO : ALTER TABLE prediction_raw_data_t ADD COLUMN
+2024-06-09 00:09:58,112 : INFO : ALTER TABLE prediction_raw_data_t ADD COLUMN
+2024-06-09 00:09:58,116 : INFO : ALTER TABLE prediction_raw_data_t ADD COLUMN
+2024-06-09 00:09:58,120 : INFO : ALTER TABLE prediction_raw_data_t ADD COLUMN
+2024-06-09 00:09:58,126 : INFO : ALTER TABLE prediction_raw_data_t ADD COLUMN
+2024-06-09 00:09:58,131 : INFO : ALTER TABLE prediction_raw_data_t ADD COLUMN
+2024-06-09 00:09:58,135 : INFO : ALTER TABLE prediction_raw_data_t ADD COLUMN
+2024-06-09 00:09:58,139 : INFO : ALTER TABLE prediction_raw_data_t ADD COLUMN
+2024-06-09 00:09:58,140 : INFO : End of Creating Table...
+2024-06-09 00:09:58,143 : INFO : Opened prediction database successfully
+2024-06-09 00:09:58,144 : INFO : Start of Inserting Data into Table...
+2024-06-09 00:09:58,164 : INFO : End of Inserting Data into Table...
+2024-06-09 00:09:58,165 : INFO : Start of Exporting Data into CSV...
+2024-06-09 00:09:58,167 : INFO : Opened prediction database successfully
+2024-06-09 00:09:58,169 : INFO : End of Exporting Data into CSV...
+2024-06-09 00:09:58,169 : INFO : Start of Moving Processed Files...
+2024-06-09 00:09:58,173 : ERROR : Exception raised while Moving Processed Files: [WinError 32] The process cannot access the file because it is being used by another process: 'data/prediction_data/hr_employee_churn_data_predict3.csv'
+Traceback (most recent call last):
+  File "C:\Program Files\Python312\Lib\shutil.py", line 886, in move
+    os.rename(src, real_dst)
+PermissionError: [WinError 32] The process cannot access the file because it is being used by another process: 'data/prediction_data/hr_employee_churn_data_predict3.csv' -> 'data/prediction_data_processed\\hr_employee_churn_data_predict3.csv'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\my pc\PycharmProjects\EmployeeRetentionPrediction\apps\ingestion\load_validate.py", line 210, in move_processed_files
+    shutil.move(self.data_path + '/' + file, self.data_path + '_processed')
+  File "C:\Program Files\Python312\Lib\shutil.py", line 907, in move
+    os.unlink(src)
+PermissionError: [WinError 32] The process cannot access the file because it is being used by another process: 'data/prediction_data/hr_employee_churn_data_predict3.csv'
+2024-06-09 00:09:58,176 : ERROR : Unsuccessful End of Data Load, validation and transformation
+Traceback (most recent call last):
+  File "C:\Program Files\Python312\Lib\shutil.py", line 886, in move
+    os.rename(src, real_dst)
+PermissionError: [WinError 32] The process cannot access the file because it is being used by another process: 'data/prediction_data/hr_employee_churn_data_predict3.csv' -> 'data/prediction_data_processed\\hr_employee_churn_data_predict3.csv'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\my pc\PycharmProjects\EmployeeRetentionPrediction\apps\ingestion\load_validate.py", line 276, in validate_predictset
+    self.move_processed_files()
+  File "C:\Users\my pc\PycharmProjects\EmployeeRetentionPrediction\apps\ingestion\load_validate.py", line 216, in move_processed_files
+    raise e
+  File "C:\Users\my pc\PycharmProjects\EmployeeRetentionPrediction\apps\ingestion\load_validate.py", line 210, in move_processed_files
+    shutil.move(self.data_path + '/' + file, self.data_path + '_processed')
+  File "C:\Program Files\Python312\Lib\shutil.py", line 907, in move
+    os.unlink(src)
+PermissionError: [WinError 32] The process cannot access the file because it is being used by another process: 'data/prediction_data/hr_employee_churn_data_predict3.csv'
+2024-06-09 00:09:58,177 : ERROR : Unsuccessful End of Prediction
+Traceback (most recent call last):
+  File "C:\Program Files\Python312\Lib\shutil.py", line 886, in move
+    os.rename(src, real_dst)
+PermissionError: [WinError 32] The process cannot access the file because it is being used by another process: 'data/prediction_data/hr_employee_churn_data_predict3.csv' -> 'data/prediction_data_processed\\hr_employee_churn_data_predict3.csv'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\my pc\PycharmProjects\EmployeeRetentionPrediction\apps\ingestion\load_validate.py", line 276, in validate_predictset
+    self.move_processed_files()
+  File "C:\Users\my pc\PycharmProjects\EmployeeRetentionPrediction\apps\ingestion\load_validate.py", line 216, in move_processed_files
+    raise e
+  File "C:\Users\my pc\PycharmProjects\EmployeeRetentionPrediction\apps\ingestion\load_validate.py", line 210, in move_processed_files
+    shutil.move(self.data_path + '/' + file, self.data_path + '_processed')
+  File "C:\Program Files\Python312\Lib\shutil.py", line 907, in move
+    os.unlink(src)
+PermissionError: [WinError 32] The process cannot access the file because it is being used by another process: 'data/prediction_data/hr_employee_churn_data_predict3.csv'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\my pc\PycharmProjects\EmployeeRetentionPrediction\apps\prediction\predict_model.py", line 34, in batch_predict_from_model
+    self.loadValidate.validate_predictset()
+  File "C:\Users\my pc\PycharmProjects\EmployeeRetentionPrediction\apps\ingestion\load_validate.py", line 280, in validate_predictset
+    raise Exception
+Exception
